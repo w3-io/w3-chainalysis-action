@@ -1,0 +1,27 @@
+name: 'W3 Chainalysis Action'
+description: 'Chainalysis sanctions screening and compliance checks for blockchain addresses'
+author: 'w3-io'
+
+inputs:
+  command:
+    description: 'Operation: screen (sanctions check). More commands coming for enterprise API.'
+    required: true
+    default: 'screen'
+  address:
+    description: 'Blockchain address to check'
+    required: true
+  api-key:
+    description: 'Chainalysis API key'
+    required: true
+
+outputs:
+  is-sanctioned:
+    description: 'Whether the address appears on a sanctions list (true/false)'
+  identifications:
+    description: 'JSON array of sanctions designations (empty array if clean)'
+  result:
+    description: 'Full JSON result from Chainalysis API'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
