@@ -1,4 +1,5 @@
-const core = require('@actions/core')
+import { createCommandRouter, setJsonOutput, handleError } from '@w3-io/action-core'
+import * as core from '@actions/core'
 
 const SANCTIONS_API = 'https://public.chainalysis.com/api/v1/address'
 
@@ -27,26 +28,12 @@ async function screen(address, apiKey) {
   return { isSanctioned, identifications }
 }
 
-async function run() {
-  try {
-    const command = core.getInput('command') || 'screen'
+const router = createCommandRouter({
+  screen: async () => {
     const address = core.getInput('address', { required: true })
     const apiKey = core.getInput('api-key', { required: true })
 
-    if (command !== 'screen') {
-      throw new Error(
-        `Unknown command: ${command}. Available: screen`,
-      )
-    }
-
     const result = await screen(address, apiKey)
-
-    core.setOutput('is-sanctioned', String(result.isSanctioned))
-    core.setOutput(
-      'identifications',
-      JSON.stringify(result.identifications),
-    )
-    core.setOutput('result', JSON.stringify(result))
 
     if (result.isSanctioned) {
       core.warning(
@@ -55,9 +42,9 @@ async function run() {
     } else {
       core.info(`Address ${address} is clean`)
     }
-  } catch (error) {
-    core.setFailed(error.message)
-  }
-}
 
-run()
+    setJsonOutput('result', result)
+  },
+})
+
+router()
