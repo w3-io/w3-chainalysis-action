@@ -23,5 +23,5 @@ outputs:
     description: "Full JSON result from Chainalysis API"
 
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
