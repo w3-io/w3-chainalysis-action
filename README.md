@@ -20,25 +20,25 @@ Sanctions screening for blockchain addresses via the Chainalysis free screening 
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
+| Command  | Description                                                |
+| -------- | ---------------------------------------------------------- |
 | `screen` | Check if an address appears on the OFAC SDN sanctions list |
 
 ## Inputs
 
-| Name | Required | Default | Description |
-|------|----------|---------|-------------|
-| `command` | Yes | `screen` | Operation to perform |
-| `address` | Yes | | Blockchain address to check |
-| `api-key` | Yes | | Chainalysis API key |
+| Name      | Required | Default  | Description                 |
+| --------- | -------- | -------- | --------------------------- |
+| `command` | Yes      | `screen` | Operation to perform        |
+| `address` | Yes      |          | Blockchain address to check |
+| `api-key` | Yes      |          | Chainalysis API key         |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| `is-sanctioned` | `true` if address is on a sanctions list |
+| Name              | Description                                                 |
+| ----------------- | ----------------------------------------------------------- |
+| `is-sanctioned`   | `true` if address is on a sanctions list                    |
 | `identifications` | JSON array of sanctions designations (empty array if clean) |
-| `result` | Full JSON response from Chainalysis API |
+| `result`          | Full JSON response from Chainalysis API                     |
 
 ## Authentication
 
