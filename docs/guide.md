@@ -40,10 +40,10 @@ Check whether a blockchain address appears on the OFAC SDN sanctions
 list. The API accepts any chain's address format (Ethereum, Bitcoin,
 Solana, etc.) and returns matches within milliseconds.
 
-| Input | Required | Description |
-| --------- | -------- | ----------------------------------- |
-| `address` | yes | Blockchain address to check |
-| `api-key` | yes | Chainalysis API key |
+| Input     | Required | Description                 |
+| --------- | -------- | --------------------------- |
+| `address` | yes      | Blockchain address to check |
+| `api-key` | yes      | Chainalysis API key         |
 
 **Output (`result`):**
 
@@ -62,11 +62,11 @@ Solana, etc.) and returns matches within milliseconds.
 
 **Additional outputs:**
 
-| Output | Type | Description |
-| ----------------- | ------- | -------------------------------------------------------- |
-| `is-sanctioned` | string | `true` if address is on a sanctions list, `false` if not |
-| `identifications` | string | JSON array of sanctions designations (empty if clean) |
-| `result` | string | Full JSON response from the Chainalysis API |
+| Output            | Type   | Description                                              |
+| ----------------- | ------ | -------------------------------------------------------- |
+| `is-sanctioned`   | string | `true` if address is on a sanctions list, `false` if not |
+| `identifications` | string | JSON array of sanctions designations (empty if clean)    |
+| `result`          | string | Full JSON response from the Chainalysis API              |
 
 When `is-sanctioned` is `false`, the `identifications` array is empty:
 
