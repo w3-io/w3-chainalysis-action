@@ -15,12 +15,8 @@ inputs:
     required: true
 
 outputs:
-  is-sanctioned:
-    description: "Whether the address appears on a sanctions list (true/false)"
-  identifications:
-    description: "JSON array of sanctions designations (empty array if clean)"
   result:
-    description: "Full JSON result from Chainalysis API"
+    description: "JSON result from Chainalysis API. Includes isSanctioned (boolean) and identifications (array of sanctions designations). Use fromJSON(steps.<id>.outputs.result).isSanctioned etc. to access individual fields."
 
 runs:
   using: "node24"
