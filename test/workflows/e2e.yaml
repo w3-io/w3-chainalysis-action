@@ -10,32 +10,37 @@
 #   - W3_SECRET_CHAINALYSIS_API_KEY set to a Chainalysis API key
 
 name: chainalysis-e2e
+on:
+  workflow_dispatch: {}
 
-steps:
-  # ── Screen a known-clean address ───────────────────────────────────────
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # ── Screen a known-clean address ───────────────────────────────────────
 
-  - name: Screen a clean Ethereum address
-    uses: w3-io/w3-chainalysis-action@v0
-    with:
-      command: screen
-      api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
-      address: "0x0000000000000000000000000000000000000001"
+      - name: Screen a clean Ethereum address
+        uses: w3-io/w3-chainalysis-action@v0
+        with:
+          command: screen
+          api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
+          address: "0x0000000000000000000000000000000000000001"
 
-  # ── Screen a known sanctioned address ──────────────────────────────────
-  # OFAC-sanctioned Tornado Cash deposit address (for testing only).
+      # ── Screen a known sanctioned address ──────────────────────────────────
+      # OFAC-sanctioned Tornado Cash deposit address (for testing only).
 
-  - name: Screen a sanctioned address
-    uses: w3-io/w3-chainalysis-action@v0
-    with:
-      command: screen
-      api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
-      address: "0xd90e2f925DA726b50C4Ed8D0Fb90Ad053324F31b"
+      - name: Screen a sanctioned address
+        uses: w3-io/w3-chainalysis-action@v0
+        with:
+          command: screen
+          api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
+          address: "0xd90e2f925DA726b50C4Ed8D0Fb90Ad053324F31b"
 
-  # ── Screen a Bitcoin address ───────────────────────────────────────────
+      # ── Screen a Bitcoin address ───────────────────────────────────────────
 
-  - name: Screen a Bitcoin address
-    uses: w3-io/w3-chainalysis-action@v0
-    with:
-      command: screen
-      api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
-      address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+      - name: Screen a Bitcoin address
+        uses: w3-io/w3-chainalysis-action@v0
+        with:
+          command: screen
+          api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
+          address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
