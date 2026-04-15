@@ -20,7 +20,7 @@ jobs:
       # ── Screen a known-clean address ───────────────────────────────────────
 
       - name: Screen a clean Ethereum address
-        uses: w3-io/w3-chainalysis-action@v0
+        uses: w3-io/w3-chainalysis-action@main
         with:
           command: screen
           api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
@@ -30,7 +30,7 @@ jobs:
       # OFAC-sanctioned Tornado Cash deposit address (for testing only).
 
       - name: Screen a sanctioned address
-        uses: w3-io/w3-chainalysis-action@v0
+        uses: w3-io/w3-chainalysis-action@main
         with:
           command: screen
           api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
@@ -39,7 +39,7 @@ jobs:
       # ── Screen a Bitcoin address ───────────────────────────────────────────
 
       - name: Screen a Bitcoin address
-        uses: w3-io/w3-chainalysis-action@v0
+        uses: w3-io/w3-chainalysis-action@main
         with:
           command: screen
           api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
