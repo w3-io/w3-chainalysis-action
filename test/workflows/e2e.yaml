@@ -1,0 +1,41 @@
+# E2E Test Workflow
+#
+# Exercises the screen command against real APIs.
+# Run on a local W3 network with:
+#   w3 workflow deploy test/workflows/e2e.yaml
+#   w3 workflow "chainalysis-e2e" trigger
+#
+# Prerequisites:
+#   - W3 local network running (make dev)
+#   - W3_SECRET_CHAINALYSIS_API_KEY set to a Chainalysis API key
+
+name: chainalysis-e2e
+
+steps:
+  # ── Screen a known-clean address ───────────────────────────────────────
+
+  - name: Screen a clean Ethereum address
+    uses: w3-io/w3-chainalysis-action@v0
+    with:
+      command: screen
+      api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
+      address: "0x0000000000000000000000000000000000000001"
+
+  # ── Screen a known sanctioned address ──────────────────────────────────
+  # OFAC-sanctioned Tornado Cash deposit address (for testing only).
+
+  - name: Screen a sanctioned address
+    uses: w3-io/w3-chainalysis-action@v0
+    with:
+      command: screen
+      api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
+      address: "0xd90e2f925DA726b50C4Ed8D0Fb90Ad053324F31b"
+
+  # ── Screen a Bitcoin address ───────────────────────────────────────────
+
+  - name: Screen a Bitcoin address
+    uses: w3-io/w3-chainalysis-action@v0
+    with:
+      command: screen
+      api-key: ${{ secrets.CHAINALYSIS_API_KEY }}
+      address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
