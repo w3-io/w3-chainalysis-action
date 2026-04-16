@@ -4,23 +4,23 @@
 
 ## Prerequisites
 
-| Credential | Env var | Source |
-|-----------|---------|--------|
+| Credential          | Env var               | Source                |
+| ------------------- | --------------------- | --------------------- |
 | Chainalysis API key | `CHAINALYSIS_API_KEY` | Chainalysis dashboard |
 
 ## Results
 
-| # | Step | Command | Status | Notes |
-|---|------|---------|--------|-------|
-| 1 | Screen a clean Ethereum address | `screen` | PASS | |
-| 2 | Screen a sanctioned address | `screen` | PASS | Tornado Cash deposit address |
-| 3 | Screen a Bitcoin address | `screen` | PASS | Genesis block coinbase |
+| #   | Step                            | Command  | Status | Notes                        |
+| --- | ------------------------------- | -------- | ------ | ---------------------------- |
+| 1   | Screen a clean Ethereum address | `screen` | PASS   |                              |
+| 2   | Screen a sanctioned address     | `screen` | PASS   | Tornado Cash deposit address |
+| 3   | Screen a Bitcoin address        | `screen` | PASS   | Genesis block coinbase       |
 
 ## Skipped Commands
 
-| Command | Reason |
-|---------|--------|
-| N/A | All commands tested |
+| Command | Reason              |
+| ------- | ------------------- |
+| N/A     | All commands tested |
 
 ## How to run
 
