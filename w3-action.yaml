@@ -1,15 +1,20 @@
 kind: integration
-name: Sanctions screening and compliance for blockchain addresses
+name: Chainalysis
 version: 0.1.0
 repo: w3-io/w3-chainalysis-action
-partner: Chainalysis
-description: Sanctions screening and compliance for blockchain addresses
-context:
-  "OFAC sanctions list screening. Check any blockchain address against the
-  US Treasury SDN list before transacting. Free API, 5000 req/5 min. Use as a compliance
-  gate before any on-chain interaction.
+partner: chainalysis
+description: >
+  Chainalysis provides blockchain compliance and sanctions screening.
+  Real-time address screening against OFAC, EU, and UN sanctions lists.
+  Includes KYT (Know Your Transaction) risk scoring and entity
+  identification for comprehensive compliance workflows.
+context: >
+  Use for compliance checks before sending funds or sanctions screening of
+  counterparty addresses. Not for general blockchain data — use SxT or
+  Chainlink for that. Cost is per-screening API call (free tier: 5000
+  req/5 min). Screening is read-only and non-destructive. Requires a
+  Chainalysis API key.
 
-  "
 commands:
   - name: screen
     description: Screen address against OFAC sanctions list.
@@ -19,9 +24,6 @@ commands:
         required: true
         description: Blockchain address to check
     outputs:
-      is-sanctioned:
-        type: boolean
-        description: Whether the address is on a sanctions list
-      identifications:
-        type: array
-        description: Sanctions designations (empty if clean)
+      result:
+        type: object
+        description: Screening result with sanctioned status and any designations
